@@ -38,11 +38,12 @@ What's important for this challenge is that we're only encoding _alphabetical st
 Something else worth mentioning: to solve this challenge, you only need initial strings up to three letters in length, because 8*3 is evenly divisible by 6, so a three-letter string will be enough to comprise every possible Base64 character position, as asked in the challenge description. If the string being encoded is not evenly divisible by three, a padding is applied, so we can try 1 and 2 as well.
 
 That's how this challenge can be solved:
-0. Get a reference list of every Base64 character in the order of ASCII table (symbols, uppercase, lowercase).
-1. Base64-encode every alphabetical string of lengths 1, 2 and 3.
-2. Given an encoded string, store a number of occurrences of every character in a certain position.
-3. Remove every character with a number of occurrences of more than 2 from the reference list.
-4. Get a sha1 checksum of whatever's left in a reference list. This is your flag.
+
+1. Get a reference list of every Base64 character in the order of ASCII table (symbols, uppercase, lowercase).
+2. Base64-encode every alphabetical string of lengths 1, 2 and 3.
+3. Given an encoded string, store a number of occurrences of every character in a certain position.
+4. Remove every character with at least 2 occurrences on the same position from the reference list.
+5. Get a sha1 checksum of whatever's left in a reference list. This is your flag.
 
 Code speaks louder than words:
 ```
