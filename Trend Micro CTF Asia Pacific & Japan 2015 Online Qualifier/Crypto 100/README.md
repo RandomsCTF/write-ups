@@ -8,7 +8,7 @@ There's also a hint about "1bit" being wrong in the public key.
 
 ## Solution
 
-Commendation: @emedvedev
+Commendation: [@emedvedev](https://github.com/emedvedev)
 
 First of all, let's get the information about the public key:
 
@@ -77,7 +77,7 @@ Going through the output, there's only one number that's easily factorized into 
 8240187261...09<77> = 279125332373073513017147096164124452877<39> · 295214597363242917440342570226980714417<39>
 ```
 
-It's our number with the last bit flipped from `0` to `1`, which is consistent with what the hint says. Let's use `rsatool` to generate the private key.
+It's our number with the last bit flipped from `0` to `1`, which is consistent with what the hint says. Let's use [rsatool](https://github.com/ius/rsatool) to generate the private key.
 
 ```
 $ python rsatool.py -p 279125332373073513017147096164124452877 -q 295214597363242917440342570226980714417 -o private.key

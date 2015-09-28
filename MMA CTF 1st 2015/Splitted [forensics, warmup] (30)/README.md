@@ -2,11 +2,11 @@
 
 ## Problem
 
-splitted.7z
+[splitted.7z](splitted.7z)
 
 ## Solution
 
-Commendation: @PeterMosmans
+Commendation: [@PeterMosmans](https://github.com/PeterMosmans)
 
 You're given a .pcap file, which contains several HTTP partial downloads.
 
@@ -23,6 +23,6 @@ Stream 8 requests bytes 1876-2344.
 
 Reassemble the stream, get a .PSD file. The flag is there.
 
-@PeterMosmans wrote a reassembling script: extract_file.py.
+@PeterMosmans wrote a reassembling script: [extract_file.py](extract_file.py).
 
 And the flag is `MMA{sneak_spy_sisters}`.

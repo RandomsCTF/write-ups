@@ -6,11 +6,11 @@ In android smartphone, you can use "pattern lock".
 
 Pattern lock use 9 dots(3x3) on the screen in the figure below.
 
-__image1.png__
+![](./image1.png?raw=true)
 
 The following figures are examples of lock pattern.
 
-__image2.png__ __image3.png__
+![](./image2.png?raw=true) ![](./image3.png?raw=true)
 
 Lock pattern must satisfy following three conditions.
 
@@ -22,7 +22,7 @@ Flag is the number of lock patterns in decimal without MMA{...}.
 
 ## Solution
 
-Commendation: @ecapuano
+Commendation: [@ecapuano](https://github.com/ecapuano)
 
 It's a warmup challenge that's easily googleable, so you can just find the answer:
 https://github.com/delight-im/AndroidPatternLock

@@ -6,7 +6,7 @@ You're given a link to the website, "Strange Auth System". It has register and l
 
 ## Solution
 
-Commendation @emedvedev
+Commendation: [@emedvedev](https://github.com/emedvedev)
 
 You're not given a hint or any indication about what to do, but usually low-point web challenges just want you to login as admin. Not in this case though: somebody just created an "admin" account which isn't any different from others.
 
