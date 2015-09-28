@@ -28,9 +28,7 @@ It's a warmup challenge that's easily googleable, so you can just find the answe
 https://github.com/delight-im/AndroidPatternLock
 http://stackoverflow.com/questions/12127833/patterns-possible-on-3x3-matrix-of-numbers
 
-However, if you're curious about the math behind this, there's a good explanation with Python code in Quora: 
+However, if you're curious about the math behind this, there's a good explanation with Python code in Quora:
 https://www.quora.com/How-many-combinations-does-Android-9-point-unlock-have/answer/Yoyo-Zhou
 
-## Flag
-
-389112
+The flag is `389112`.

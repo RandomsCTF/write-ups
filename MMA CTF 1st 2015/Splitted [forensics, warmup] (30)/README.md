@@ -25,6 +25,4 @@ Reassemble the stream, get a .PSD file. The flag is there.
 
 @PeterMosmans wrote a reassembling script: extract_file.py.
 
-## Flag
-
-MMA{sneak_spy_sisters}
+And the flag is `MMA{sneak_spy_sisters}`.
