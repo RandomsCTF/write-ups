@@ -50,7 +50,7 @@ Then, after a few more problems, Roman numerals start to appear, like this:
 IX * VIII =
 ```
 
-You'd think that Trend Micro has advanced with the rest of humanity since the fall of the Roman Empire, but apparently they still have some, um, legacy problems. Not to worry, there's a Python lib for that and it's called 'romanclass'. We're gonna catch every Roman numeral with a regex, make it an instance of romanclass.Roman and cast to integer.
+You'd think that Trend Micro has advanced with the rest of humanity since the fall of the Roman Empire, but apparently they still have some, um, legacy problems. Not to worry, there's a Python lib for that and it's called `romanclass`. We're gonna catch every Roman numeral with a regex, make it an instance of `romanclass.Roman` and cast to integer.
 
 ```
 from romanclass import Roman
