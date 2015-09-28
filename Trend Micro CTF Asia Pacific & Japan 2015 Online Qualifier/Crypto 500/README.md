@@ -7,11 +7,16 @@ After you encode the strings with Base64 respectively, if you find characters lo
 You may find examples where the final strings are ‘2015’ and ‘Japan’ if you place the extracted characters from left to right in order.
 
 Example:
-CaEkMbVnD→(Base64)→Q_2_FFa_01_iVm_5_E
-GePoMjXNW→(Base64)→R_2_VQb_01_qWE_5_X
 
-aBckjTiRgbpS→(Base64)→YU_J_j_a_2_p_U_a_VJnY_n_BT
-URehZQjLyvwk→(Base64)→VV_J_l_a_F_p_R_a_kx5d_n_dr
+```
+CaEkMbVnD→(Base64)→Q2FFa01iVm5E
+GePoMjXNW→(Base64)→R2VQb01qWE5X
+                    2   01   5
+
+aBckjTiRgbpS→(Base64)→YUJja2pUaVJnYnBT
+URehZQjLyvwk→(Base64)→VVJlaFpRakx5dndr
+                        J a p a    n
+```
 
 Character 'a' may appear in the extracted string like the example above, character `f` will never appear.
 Please find a list of characters that would not appear in the extracted string, even if you specify any alphabetical characters in the input.
