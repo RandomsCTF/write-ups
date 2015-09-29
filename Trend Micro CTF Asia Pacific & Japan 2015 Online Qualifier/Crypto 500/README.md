@@ -27,7 +27,7 @@ Please submit the flag in the format of 'TMCTF{<flag>}'.
 
 ## Solution
 
-Commendation: [@emedvedev](https://github.com/emedvedev)
+Credit: [@emedvedev](https://github.com/emedvedev)
 
 I don't get why this challenge was worth 500 points. I also don't get why is it a _crypto_ challenge. It's ridiculously easy once you learn how base64 is formed.
 

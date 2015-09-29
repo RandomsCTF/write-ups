@@ -6,7 +6,7 @@
 
 ## Solution
 
-Commendation: [@PeterMosmans](https://github.com/PeterMosmans)
+Credit: [@PeterMosmans](https://github.com/PeterMosmans)
 
 You're given a .pcap file, which contains several HTTP partial downloads.
 

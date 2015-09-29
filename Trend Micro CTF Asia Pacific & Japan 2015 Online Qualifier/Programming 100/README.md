@@ -6,7 +6,7 @@ You have to play a game of "choose a square with a different color". The problem
 
 ## Solution
 
-Commendation: [@emedvedev](https://github.com/emedvedev)
+Credit: [@emedvedev](https://github.com/emedvedev)
 
 After you try to play by hand a little bit, you see that the difference between colors gets really small and—very soon—just indistinguishable to the human eye, and the squares get smaller up to 1x1 in the end, too. Up to a certain point you can actually use color range select in Photoshop to find the odd square and then click it, but let's not dig into that: after all, we have a programming challenge.
 

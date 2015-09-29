@@ -8,7 +8,7 @@ nc ctfquest.trendmicro.co.jp 51740
 
 ## Solution
 
-Commendation: [@emedvedev](https://github.com/emedvedev)
+Credit: [@emedvedev](https://github.com/emedvedev)
 
 When you connect to the server, it gives you a range of arithmetic problems and expects answers.
 

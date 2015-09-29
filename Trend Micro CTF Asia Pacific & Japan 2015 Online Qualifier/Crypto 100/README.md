@@ -8,7 +8,7 @@ There's also a hint about "1bit" being wrong in the public key.
 
 ## Solution
 
-Commendation: [@emedvedev](https://github.com/emedvedev)
+Credit: [@emedvedev](https://github.com/emedvedev)
 
 First of all, let's get the information about the public key:
 
