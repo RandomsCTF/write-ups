@@ -22,7 +22,7 @@ Flag is the number of lock patterns in decimal without MMA{...}.
 
 ## Solution
 
-Commendation: [@ecapuano](https://github.com/ecapuano)
+Credit: [@ecapuano](https://github.com/ecapuano)
 
 It's a warmup challenge that's easily googleable, so you can just find the answer:
 https://github.com/delight-im/AndroidPatternLock

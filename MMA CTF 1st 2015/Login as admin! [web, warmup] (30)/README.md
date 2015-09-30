@@ -10,7 +10,7 @@ You can use test:test.
 
 ## Solution
 
-Commendation: [@emedvedev](https://github.com/emedvedev)
+Credit: [@emedvedev](https://github.com/emedvedev)
 
 The form contains an easy SQL injection and you can login as admin with entering `admin' --` in the username field.
 
