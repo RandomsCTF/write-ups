@@ -2,7 +2,7 @@
 
 ## Problem
 
-[vonn.zip](puzzle/vonn.zip)
+[vonn.zip](vonn.zip)
 
 Analyze this! (pass: wx5tOCvU3g2FmueLEvj5np9xJX0cND3K)
 
