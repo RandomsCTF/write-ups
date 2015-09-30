@@ -2,6 +2,8 @@
 
 ## Problem
 
+[vonn.zip](puzzle/vonn.zip)
+
 Analyze this! (pass: wx5tOCvU3g2FmueLEvj5np9xJX0cND3K)
 
 ## Solution
@@ -11,7 +13,7 @@ Credit: [@gellin](https://github.com/gellin)
 It doesn't come with any hints or direction, so lets take a stab at it with the `file` command.
 
 ```
-root@kali:/media/sf_vm_share# file vonn 
+root@kali:/media/sf_vm_share# file vonn
 vonn: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.24, BuildID[sha1]=7f89c2bb36cc9d0882a4980a99d44a7674fb09e2, not stripped
 ```
 
@@ -28,7 +30,7 @@ After reading the function it appears to do the following. Open a handle to `/tm
 So its time to open `gdb` in our VM and try to break it, lets atleast see what this file `/tmp/...,,,...,,` is all about.
 
 ```
-root@kali:/media/sf_vm_share# gdb ./vonn 
+root@kali:/media/sf_vm_share# gdb ./vonn
 (gdb) start
 Temporary breakpoint 1 at 0x400b91
 Starting program: /media/sf_vm_share/vonn
@@ -40,17 +42,17 @@ Dump of assembler code for function main:
    0x0000000000400b91 <+4>:	sub    $0xd0,%rsp
    0x0000000000400b98 <+11>:	mov    %edi,-0xc4(%rbp)
    0x0000000000400b9e <+17>:	mov    %rsi,-0xd0(%rbp)
-   0x0000000000400ba5 <+24>:	cpuid  
-   0x0000000000400ba7 <+26>:	rdtsc  
+   0x0000000000400ba5 <+24>:	cpuid
+   0x0000000000400ba7 <+26>:	rdtsc
    0x0000000000400ba9 <+28>:	mov    %rax,-0xb8(%rbp)
    0x0000000000400bb0 <+35>:	mov    %rdx,-0xb0(%rbp)
-   0x0000000000400bb7 <+42>:	rdtsc  
+   0x0000000000400bb7 <+42>:	rdtsc
    0x0000000000400bb9 <+44>:	mov    %rax,-0xa8(%rbp)
    0x0000000000400bc0 <+51>:	mov    %rdx,-0xa0(%rbp)
-   0x0000000000400bc7 <+58>:	rdtsc  
+   0x0000000000400bc7 <+58>:	rdtsc
    0x0000000000400bc9 <+60>:	mov    %rax,-0x98(%rbp)
    0x0000000000400bd0 <+67>:	mov    %rdx,-0x90(%rbp)
-   0x0000000000400bd7 <+74>:	rdtsc  
+   0x0000000000400bd7 <+74>:	rdtsc
    0x0000000000400bd9 <+76>:	mov    %rax,-0x88(%rbp)
    0x0000000000400be0 <+83>:	mov    %rdx,-0x80(%rbp)
    0x0000000000400be4 <+87>:	mov    -0xb8(%rbp),%rax
@@ -122,8 +124,8 @@ Dump of assembler code for function main:
    0x0000000000400cfa <+365>:	jmp    0x400d06 <main+377>
    0x0000000000400cfc <+367>:	mov    $0x401110,%edi
    0x0000000000400d01 <+372>:	callq  0x400990 <puts@plt>
-   0x0000000000400d06 <+377>:	leaveq 
-   0x0000000000400d07 <+378>:	retq   
+   0x0000000000400d06 <+377>:	leaveq
+   0x0000000000400d07 <+378>:	retq
 End of assembler dump.
 ```
 
@@ -143,17 +145,17 @@ Dump of assembler code for function main:
    0x0000000000400b91 <+4>: sub    $0xd0,%rsp
    0x0000000000400b98 <+11>:    mov    %edi,-0xc4(%rbp)
    0x0000000000400b9e <+17>:    mov    %rsi,-0xd0(%rbp)
-   0x0000000000400ba5 <+24>:    cpuid  
-   0x0000000000400ba7 <+26>:    rdtsc  
+   0x0000000000400ba5 <+24>:    cpuid
+   0x0000000000400ba7 <+26>:    rdtsc
    0x0000000000400ba9 <+28>:    mov    %rax,-0xb8(%rbp)
    0x0000000000400bb0 <+35>:    mov    %rdx,-0xb0(%rbp)
-   0x0000000000400bb7 <+42>:    rdtsc  
+   0x0000000000400bb7 <+42>:    rdtsc
    0x0000000000400bb9 <+44>:    mov    %rax,-0xa8(%rbp)
    0x0000000000400bc0 <+51>:    mov    %rdx,-0xa0(%rbp)
-   0x0000000000400bc7 <+58>:    rdtsc  
+   0x0000000000400bc7 <+58>:    rdtsc
    0x0000000000400bc9 <+60>:    mov    %rax,-0x98(%rbp)
    0x0000000000400bd0 <+67>:    mov    %rdx,-0x90(%rbp)
-   0x0000000000400bd7 <+74>:    rdtsc  
+   0x0000000000400bd7 <+74>:    rdtsc
    0x0000000000400bd9 <+76>:    mov    %rax,-0x88(%rbp)
    0x0000000000400be0 <+83>:    mov    %rdx,-0x80(%rbp)
    0x0000000000400be4 <+87>:    mov    -0xb8(%rbp),%rax
@@ -226,8 +228,8 @@ Dump of assembler code for function main:
    0x0000000000400cfa <+365>:   jmp    0x400d06 <main+377>
    0x0000000000400cfc <+367>:   mov    $0x401110,%edi
    0x0000000000400d01 <+372>:   callq  0x400990 <puts@plt>
-   0x0000000000400d06 <+377>:   leaveq 
-   0x0000000000400d07 <+378>:   retq   
+   0x0000000000400d06 <+377>:   leaveq
+   0x0000000000400d07 <+378>:   retq
 End of assembler dump.
 ```
 Now that we verified the jump's are `DEAD`, we are going to let it ride!
