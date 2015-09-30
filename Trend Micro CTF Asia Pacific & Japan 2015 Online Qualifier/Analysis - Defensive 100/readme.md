@@ -19,11 +19,11 @@ vonn: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, i
 
 Now lets see what `IDA 64` says about it.
 
-![Image of main](http://i.imgur.com/pI1VcTd.png)
+![](./1.png?raw=true)
 
 The main function looks pretty simple, it loads a few variables, and then does a few checks on them only resulting in two main case `branches`. In one case, it prints `You are not on VMM` and then simply returns, in the other case it prints `You are on VMM!` and then calls a function named `ldex`. So we should already be assuming we need to make this program call `ldex` so lets take a look at it!
 
-![Image of ldex](http://i.imgur.com/QSS1eg5.png)
+![](./2.png?raw=true)
 
 After reading the function it appears to do the following. Open a handle to `/tmp/...,,,...,,` on the HDD. Read a buffer into memory, decrypt the buffer and write it to the open handle and finally execute the file `/tmp/...,,,...,,`.
 
