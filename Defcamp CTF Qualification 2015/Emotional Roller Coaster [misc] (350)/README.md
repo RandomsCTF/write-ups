@@ -24,7 +24,7 @@ Here it is. We really are good listeners, aren't we? ![](emotions/donttellanyone
 
 #### 2. The response
 
-That an MX (mail) query to a DNS server: it asks our machine to resolve `dctfu2126.1337.def`. Let's fire up a DNS server and actually resolve the query; DNSmasq does this job quite well and it's incredibly easy to set up. ![](emotions/dancing.gif?raw=true)
+The request is an MX (mail) query to a DNS server: it asks our machine to resolve `dctfu2126.1337.def`. Let's fire up a DNS server and actually resolve the query; DNSmasq does this job quite well and it's incredibly easy to set up. ![](emotions/dancing.gif?raw=true)
 
 ```
 $ dnsmasq --address=/dctfu2126.1337.def/10.20.8.95 --mx-host=dctfu2126.1337.def --mx-target=10.20.8.95
