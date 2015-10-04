@@ -46,7 +46,7 @@ Logically enough, since we answered that our machine is a mail server, we're see
 
 #### 4. The attachment
 
-Attached to the e-mail is a packet capture file, [fpts.pcap](ftps.pcap). Let's fire up Wireshark again:
+Attached to the e-mail is a packet capture file, [ftps.pcap](ftps.pcap). Let's fire up Wireshark again:
 
 ![](wireshark3.png?raw=true)
 
