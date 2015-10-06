@@ -89,9 +89,9 @@ Consider the following scenario:
 3. User input is sanitized and escaped, it's not allowed to use any special characters.
 4. Encrypted data string is stored on the client side in HTML5 local storage.
 
-Peter the Programmer had some concerns about storing data on the client side: it just feels wrong, and is probably unsafe. He shared the concern, but his CEO said there is simply no time and no resources to implement a proper server-side database in time for the important launch. They go to Wikipedia: the article says that "there are no known practical attacks that would allow anyone to read correctly implemented AES encrypted data," so Peter makes peace with it.
+Peter the Programmer was concerned about storing data on the client side: it just feels wrong, and is probably unsafe. He shared the concern, but his CEO said there is simply no time and no resources to implement a proper server-side database in time for the important launch. They go to Wikipedia: the AES article says that "there are no known practical attacks that would allow anyone to read correctly implemented AES encrypted data," so Peter makes peace with it.
 
-Let's see why Peter is wrong:
+Let's see why Peter and his CEO are wrong:
 
 ```
 $ echo -n "username=mallory;about=I am mallory aaaaaaaaaaaaaaaaaaaaaaaaaaa" | openssl aes-128-cbc -K AABBAABBAABBAABBAABBAABBAABBAABB -iv AABBAABBAABBAABBAABBAABBAABBAABB | xxd
@@ -101,7 +101,7 @@ $ echo -n "username=mallory;about=I am mallory aaaaaaaaaaaaaaaaaaaaaaaaaaa" | op
 0000030: 5ae0 9395 0f4b 1068 3983 bd92 15c9 413a  Z....K.h9.....A:
 ```
 
-This is exactly the case when scrambling one of the encrypted blocks can be tolerated: if the attack is performed correctly, the "about" field will be scrambled, but the serialization structure will still hold. Mallory just needs to flip one byte to change the underscore preceding "admin" to a semicolon. Let's match the plaintext to blocks:
+This is exactly the case when scrambling one of the encrypted blocks can be tolerated: if the attack is performed correctly, the "about" field will be scrambled, but the serialization structure will hold. Let's see how Mallory can promote herself to admin by modifying the ciphertext stored in her browser. First, we match the plaintext to blocks:
 
 ```
 u  s  e  r  n  a  m  e  =  m  a  l  l  o  r  y
