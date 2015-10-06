@@ -117,7 +117,7 @@ a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 5a e0 93 95 0f 4b 10 68 39 83 bd 92 15 c9 41 3a
 ```
 
-Now we'll write a Python function that takes the known plaintext of a block, a desired plaintext and the ciphertext of the preceding block, and returns the modified ciphertext:
+Now we'll write a Python function that takes as arguments a known plaintext of a block, a desired plaintext and the ciphertext of the preceding block, then returns the modified block ciphertext:
 ```
 def mod_block(plaintext, mod, prev_block):
     diff = [ord(a) ^ ord(b) for a, b in zip(plaintext[:16], mod[:16])]
@@ -134,7 +134,7 @@ Let's run it:
 'ce8b424c2f9d31aa699bfbee6c35867e'
 ```
 
-Now let's see if it worked:
+Mallory appends this to one block before last. Now let's see if it worked:
 ```
 username=mallory;about=I am mall? 腳???/???aaaa;admin=true
 ```
@@ -144,14 +144,14 @@ Done: Mallory is admin now.
 
 #### Modifying first block
 
-Modifying the first block of the ciphertext is done similarly to the previous scenario with two important details that are both connected to the fact that there is no preceding block.
+Modifying the first block of the ciphertext is done similarly to the previous scenario with two important details that are both connected to the fact that there is no preceding block when the first block is concerned.
 
-1. Instead of preceding block's ciphertext we use IV.
+1. Instead of preceding block's ciphertext we modify IV.
 2. Nothing gets scrambled in the plaintext after deciphering.
 
-This means that if you have access to IV and can modify it, you'll be able to change the first block of plaintext with no evidence of tampering. This is exactly how the challenge is solved.
+This means that if you have access to IV and can modify it, you'll be able to change the first block of plaintext with no evidence of tampering. This is exactly how our challenge is solved.
 
-We need to change `Pass: sup3r31337. Don't loose it!` to `Pass: notAs3cre7. Don't loose it!`. We can use the Python function from the previous example and input IV instead of the preceding block, otherwise it's exactly the same:
+We need to change `Pass: sup3r31337. Don't loose it!` to `Pass: notAs3cre7. Don't loose it!`, and we are also given the IV which we'll need to modify. We can use the Python function from the previous example and input IV instead of the preceding block; the function itself is unchanged:
 
 ```
 >>> def mod_block(plaintext, mod, prev_block):
