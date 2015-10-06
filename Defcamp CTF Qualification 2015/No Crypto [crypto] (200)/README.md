@@ -35,11 +35,13 @@ While this challenge doesn't need a particularly long write-up, I'll try to expl
 
 #### CBC explained
 
-Let's take a look at how CBC (Cipher Block Chaining) works first:
+AES is a block cipher, which means that plaintext is split into blocks: every block is encoded with an encryption key of an equal length (128, 192 or 256 bits in case of AES). By itself, a block cipher is only suitable for secure transmission of one block; in order to encode larger amounts of data, various _modes of operation_ were introduced. CBC (Cipher Block Chaining) is one of such modes.
 
-![](cbc.svg?raw=true)
+Let's take a look at how CBC works:
 
-To encrypt a block in CBC the block's plaintext needs to be XORed with the preceding block's ciphertext first (and the first block is XORed with IV). This algorithm makes CBC vulnerable to the so-called "byte-flipping attack": when you XOR a byte in a block's ciphertext, next block's plaintext gets XORed in the same position. Let's try that:
+![](cbc.png?raw=true)
+
+To encrypt a block in CBC mode each block's plaintext is XORed with the preceding block's ciphertext (or IV for the first block), then encoded with a chosen algorithm. CBC is widely-used, but because of its properties it's vulnerable to the "byte-flipping attack": when you change a byte in a block's ciphertext, the byte in the same position of the next block's plaintext gets changed. Let's explore that:
 
 ```
 $ echo "Flip this byte: A" | openssl aes-128-cbc -K AABBAABBAABBAABBAABBAABBAABBAABB -iv AABBAABBAABBAABBAABBAABBAABBAABB > message
@@ -58,7 +60,7 @@ A  \n
 7a 95 aa 2b 31 2a d8 04 3b f8 92 ba 42 3e bf 50
 ```
 
-As described earlier, to flip a byte of a block's plaintext we need to flip the corresponding byte of the preceding block's ciphertext, which means that changing `98` (first byte of the first block) will do the trick. To change `A` to `Z` we'll need to XOR `98` with `A XOR Z`, so let's find out the value with Python:
+As described earlier, to flip a byte of a block's plaintext we need to flip the corresponding byte of the preceding block's ciphertext, which means that changing `98` (first byte of the first block) will change `A` in the encoded message. To change `A` to `Z` we'll need to XOR `98` with `A XOR Z`, so let's find out the value with Python:
 
 ```
 >>> hex(0x98 ^ ord("A") ^ ord("Z"))
