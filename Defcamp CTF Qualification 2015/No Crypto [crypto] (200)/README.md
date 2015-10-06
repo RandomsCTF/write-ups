@@ -41,7 +41,7 @@ Let's take a look at how CBC works:
 
 ![](cbc.png?raw=true)
 
-To encrypt a block in CBC mode each block's plaintext is XORed with the preceding block's ciphertext (or IV for the first block), then encoded with a chosen algorithm (AES in our case). CBC is widely-used, but because of its properties it's vulnerable to byte-flipping attacks: when you change a byte in a block's ciphertext, the byte in the same position of the next block's plaintext gets changed. Let's explore that:
+To encrypt a block in CBC mode each block's plaintext is XORed with the preceding block's ciphertext (or IV for the first block), then encoded with a chosen algorithm (AES in our case). CBC is widely-used, but because of its properties it's vulnerable to byte-flipping attacks: when you change a byte in a block's ciphertext, the byte in the same position of the next block's plaintext gets changed because of the XOR operation. Let's explore that:
 
 ```
 $ echo "Flip this byte: A" | openssl aes-128-cbc -K AABBAABBAABBAABBAABBAABBAABBAABB -iv AABBAABBAABBAABBAABBAABBAABBAABB > message
