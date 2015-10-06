@@ -101,7 +101,7 @@ $ echo -n "username=mallory;about=I am mallory aaaaaaaaaaaaaaaaaaaaaaaaaaa" | op
 0000030: 5ae0 9395 0f4b 1068 3983 bd92 15c9 413a  Z....K.h9.....A:
 ```
 
-This is exactly the case when scrambling one of the encrypted blocks can be tolerated: if the attack is performed correctly, the "about" field will be scrambled, but the serialization structure will hold. Let's see how Mallory can promote herself to admin by modifying the ciphertext stored in her browser. First, we match the plaintext to blocks:
+This is exactly the case when scrambling one of the encrypted blocks can be tolerated: if the attack is performed correctly, the "about" field will be scrambled, but the serialization structure will hold. Let's see how Mallory can promote herself to admin by modifying the ciphertext stored in her browser. First, we match the plaintext to ciphertext to see which block we'll need to change and at which positions the symbols we need are:
 
 ```
 u  s  e  r  n  a  m  e  =  m  a  l  l  o  r  y
