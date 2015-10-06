@@ -50,7 +50,7 @@ $ xxd message
 0000010: 7a95 aa2b 312a d804 3bf8 92ba 423e bf50  z..+1*..;...B>.P
 ```
 
-Block size of AES-128 is 16 bytes, which means that the letter "A" we need to change falls into the first byte of the second block:
+Block size of AES-128 is 16 bytes, which means that the letter "A" that we need to change falls into the first byte of the second block:
 
 ```
 F  l  i  p     t  h  i  s     b  y  t  e  :
