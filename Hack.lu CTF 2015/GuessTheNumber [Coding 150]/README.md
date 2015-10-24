@@ -16,7 +16,7 @@ You can find the service on school.fluxfingers.net:1523
 
 Credit: [@emedvedev](https://github.com/emedvedev)
 
-Communicating with the service gives a guess-the-number game, which uses a PRNG to generate numbers and also gives you the right number on a failed try:
+Communicating with the service opens a guess-the-number game, which uses a PRNG to generate numbers and exposes the right number on a failed try:
 
 ```
 > Welcome to the awesome guess-my-number game!
@@ -31,13 +31,13 @@ Communicating with the service gives a guess-the-number game, which uses a PRNG 
 Let's take a look at the hints we're given: LCG (linear congruental generator) is a pseudorandom number generator which is defined by the following relation:
 
 ```
-X<sub>n+1</sub> = (a * X<sub>n</sub> + c) mod m
+X(n+1) = (a * X(n) + c) mod m
 ```
 
-Here, `X` is the sequence with `X<sub>0</sub>` being the seed (start value), and the rest of the numbers pre-defined. [Wikipedia](https://en.wikipedia.org/wiki/Linear_congruential_generator) gives a lot more information as well as `glibc` parameters, which we'll need in our challenge. With the parameters from `glibc` our sequence will be defined as:
+Here, `X` is the sequence, where `X(0)` is the seed (start value), and the rest of the numbers are pre-defined. [Wikipedia](https://en.wikipedia.org/wiki/Linear_congruential_generator) gives a lot more information as well as `glibc` parameters, which we'll need in our challenge. With the parameters from `glibc` our sequence will be defined as:
 
 ```
-X<sub>n+1</sub> = (1103515245 * X<sub>n</sub> + 12345) mod 2^31
+X(n+1) = (1103515245 * X(n) + 12345) mod 2^31
 ```
 
 The seed is server time formatted as `YmdHMS`: for `24.10.2015 23:34:22` the seed would be `20152410233422`.
@@ -94,7 +94,7 @@ Checking the output, the number we get proves to be incorrect:
 Wrong! You lost the game. The right answer would have been '47'. Quitting.
 ```
 
-Time for some long and tiresome trial and error. The breakthrough happens after checking whether the number we get from the server appears at some other place in a sequence rather than the beginning. We modify the code to open the connection 10 times and comparing the correct answer with the first 200 elements from the LCG sequence with the same seed:
+Time for some long and tiresome trial and error. The breakthrough happens after checking whether the number we get from the server appears at some other place in a sequence rather than the beginning. We modify the code to open the connection 10 times and compare the correct answer with the first 200 elements from our LCG sequence with the same seed:
 
 ```
 for sample in xrange(1, 10):
@@ -148,9 +148,9 @@ Sample #5
  [...]
 ```
 
-Apparently, sequence element #100 is always our initial answer. When we check sequence element #101, it doesn't appear as the second answer, but number #99 does, which is enough to guess what the server algorithm is: take the first 100 numbers from the LCG and run them backwards.
+Apparently, sequence element #100 is always our answer #1. When we try to go forward, it turns out sequence element #101 is not the answer #2, but number #99 is. That is enough to guess what the server algorithm is: take the first 100 numbers from the LCG and run them backwards.
 
-Here's the code to replicate the sequence:
+Here's the code to replicate the whole sequence:
 
 ```
 seeds = []
@@ -181,7 +181,7 @@ flag{don't_use_LCGs_for_any_guessing_competition}
 
 ## Another take
 
-There's another take on this problem that's just too creative not to mention here: some teams just opened 101 connections at the same second (to have the same seed), then used each connection as an oracle for getting subsequent numbers.
+There's another take on this problem that's just too creative not to mention here: some teams solved the challenge by opening 101 connections at the same second (to have the same seed), then used each connection as an oracle for getting subsequent numbers.
 
 The method works like this:
 - open 101 connections in one second so that they all have the same seed;
