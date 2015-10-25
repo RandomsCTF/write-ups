@@ -23,7 +23,7 @@ Clicking on "date" sends us to `https://school.fluxfingers.net:1522/?module=date
 
 ![](listing.png?raw=true)
 
-Let's try directory traversal. It works: `https://school.fluxfingers.net:1522/?module=../index.php` includes `index.php` in place of a module.
+Let's try directory traversal. `https://school.fluxfingers.net:1522/?module=../index.php` includes `index.php` in place of a module.
 
 ![](index.png?raw=true)
 
@@ -48,6 +48,6 @@ Opening `flag.php` to get our flag:
 not that easy, fella
 ```
 
-Minor setback. Let's include the file through `?module`: `https://school.fluxfingers.net:1522/?module=../3cdcf3c63dc02f8e5c230943d9f1f4d75a4d88ae/flag.php` reveals the flag.
+Minor setback. Let's include the file through the `?module` argument: `https://school.fluxfingers.net:1522/?module=../3cdcf3c63dc02f8e5c230943d9f1f4d75a4d88ae/flag.php` reveals the flag.
 
 ![](flag.png?raw=true)

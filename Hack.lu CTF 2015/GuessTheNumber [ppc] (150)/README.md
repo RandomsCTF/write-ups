@@ -148,7 +148,7 @@ Sample #5
  [...]
 ```
 
-Apparently, sequence element #100 is always our answer #1. When we try to go forward, it turns out sequence element #101 is not the answer #2, but number #99 is. That is enough to guess what the server algorithm is: take the first 100 numbers from the LCG and run them backwards.
+Apparently, sequence element #100 is always our answer #1. When we try to go forward, it turns out that the element #101 is not the answer #2, but the element #99 is. That is enough to guess what the server algorithm is: take the first 100 numbers from the LCG and run them backwards.
 
 Here's the code to replicate the whole sequence:
 

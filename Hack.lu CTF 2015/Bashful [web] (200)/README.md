@@ -6,7 +6,7 @@
 
 Good thing that you're in the middle of some project days and these little dipshits wrote a simple message storing web application. How cute. It's written in bash... that's... that's... aw- no... bashful. You've got the source, you've got the skills. 0wn the shit out of this and show them who's b0ss.
 
-[Challenge](https://school.fluxfingers.net:1503/) (up as of 25 Oct, 2015)
+[Challenge](https://school.fluxfingers.net:1503/)
 
 [Source](bashful.tar.bz2)
 
@@ -14,7 +14,7 @@ Good thing that you're in the middle of some project days and these little dipsh
 
 Credit: [@emedvedev](https://github.com/emedvedev)
 
-**Note**: we'll be taking a shortcut not originally intended by the challenge developers, so if you'd like to know how to properly exploit a website written in bash (no, grandson, we don't normally do that here in 2015, don't be frightened), find another write-up.
+**Note**: we'll be taking a shortcut not intended by the challenge developers, so if you'd like to know how to properly exploit a website written in bash (no, grandson, we don't normally do that here in 2015, don't be frightened), find another write-up.
 
 The site in question is a memo service: it gives you a `sessid` and lets you write memos while escaping all the special chars. There's also a `DEBUG` parameter, a vulnerability allowing you to mess with environment variables, and the `sessid` itself could be exploited, too, so there's probably a million ways to solve it. Well, disregard all that: it's written in Bash, so why try hard when you have [Shellshock](https://en.wikipedia.org/wiki/Shellshock_(software_bug))?
 
