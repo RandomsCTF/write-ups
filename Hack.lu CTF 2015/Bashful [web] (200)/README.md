@@ -1,4 +1,4 @@
-# GuessTheNumber
+# Bashful
 
 ## Problem
 
