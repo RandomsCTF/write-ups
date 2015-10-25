@@ -8,7 +8,7 @@ Johnny B. Krad from your local schoolyard gang still thinks that you are a poser
 
 ## Solution
 
-Credit: [@emedvedev](https://github.com/emedvedev), @just.johnny
+Credit: [@emedvedev](https://github.com/emedvedev), [@johndearman](https://github.com/johndearman)
 
 This is a sequel to the [Perl Golf](../Perl Golf [ppc] (75)/) challenge from the same CTF with considerably less solves. Let's open the link:
 
