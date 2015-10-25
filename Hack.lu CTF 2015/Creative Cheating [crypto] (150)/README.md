@@ -91,8 +91,8 @@ bob = RSAPerson(
 
 Let's try decrypting the messages now. Since we have Alice sending packets to Bob, we'll have to decode the data with Bob's private key. We'll modify our code to:
 
-1. Order the list by `SEQ`.
-2. Parse the messages before storing.
+1. Order the data entries by `SEQ`.
+2. Parse the entries into `SEQ`, `DATA` and `SIG` before storing.
 3. Decrypt `DATA` with Bob's key.
 
 ```
