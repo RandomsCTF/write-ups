@@ -13,8 +13,6 @@ Credit: [@emedvedev](https://github.com/emedvedev), [@gellin](https://github.com
 Firstly, let's examine the archive we're given:
 
 ```
-Eduards-Air:drbob warabe$ find .
-.
 ./home
 ./home/dr_bob
 ./home/dr_bob/.VirtualBox
@@ -64,16 +62,16 @@ That's what a typical `/etc/shadow` entry containing a password hash looks like:
 smithj:Ep6mckrOLChF.:10063:0:99999:7:::
 ```
 
-Let's look for strings formatted like this inside our `.vdi` drive image, get the password hash for `root` and replace it with an empty string on every occurrence. It can be done with a hex editor which is comfortable with lookups inside a 1.78 GB disk image (I use Synalyze It! on OS X) or with your typical command-line tools. For the sake of brevity I'll use the latter:
+Let's look for strings formatted like this inside our `.vdi` drive image, find out what the password hash for `root` is and replace it with our own hash of a known password. It can be done with a hex editor which is comfortable with lookups inside a 1.78 GB disk image (I use _Synalyze It!_ on OS X), as well as your typical command-line tools. For the sake of brevity I'll use the latter:
 
-1. Generating a hash for a known password:
+Generating a hash for a known password:
 
 ```
 $ mkpasswd -m sha-512 mynewpassword saltsalt
 $6$saltsalt$ZzMhzEvGVJfYqywGstIsbfPRf7x0n1km8ZHJAmnFZ3juwus6rwrvnLbtcRCFsRd.gH8pbMZlTEtEHyOSNmOyT0
 ```
 
-2. Searching for the root password to replace:
+Searching for the root password to replace:
 
 ```
 $ strings Safe.vdi | grep root: | grep :::
@@ -81,7 +79,7 @@ root:$6$pBOgEWfD$vKmHQo3cYURAjB50meHPQw1MvDBKBSuqLj53rPeLCc23l26L1YRuJTfu.KV1KDX
 [...]
 ```
 
-3. Replacing every occurrence of the root password with our generated one:
+Replacing every occurrence of the root password hash with ours:
 
 ```
 $ LANG=C sed -i -e 's/$6$pBOgEWfD$vKmHQo3cYURAjB50meHPQw1MvDBKBSuqLj53rPeLCc23l26L1YRuJTfu\.KV1KDXb\/1ekrvb4EBRZt\.xuKRRER0/$6$saltsalt$ZzMhzEvGVJfYqywGstIsbfPRf7x0n1km8ZHJAmnFZ3juwus6rwrvnLbtcRCFsRd.gH8pbMZlTEtEHyOSNmOyT0/g' Safe.vdi
@@ -93,7 +91,7 @@ All that's left is restoring the snapshot and logging in as `root:mynewpassword`
 
 ### Breaking the encryption
 
-The other way of recovering the flag is more complicated but also more exciting. Well, everything with "breaking" and "encryption" in a sentence is exciting a priori, but we'll also get to play with memory dumps, which is always fun.
+The other way of recovering the flag is more complicated but also more exciting. Well, everything with "breaking" and "encryption" in a sentence is exciting _a priori_, but we'll also get to play with memory dumps, which is always fun.
 
 This solution is based on the fact is that the drive is already decrypted in the snapshot, which means that the decryption key is stored somewhere in memory. We'll get a memdump with the VirtualBox management tool:
 
@@ -109,11 +107,11 @@ $ ./aeskeyfind safe.elf
 Keyfind progress: 100%
 ```
 
-Simple as that. The key we've recovered is a master key: we can easily set a new passphrase with it. We'll reboot the box and log in as root the same way we'd start recovering a lost password: by appending `init=/bin/bash` to the Grub boot entry.
+Simple as that. The key we've recovered is a master key: we can easily set a new passphrase with it. We'll reset the root password first: boot by appending `init=/bin/bash` to the Grub entry.
 
 ![](grub.png?raw=true)
 
-Remove the root password from `/etc/shadow` and boot into the VM ignoring the passphrase prompt. Almost done: now we just need to write our master key to a file and use it to set a new passphrase.
+Remove the root password from `/etc/shadow`, reboot, load the OS ignoring the encrypted drive passphrase prompt. Almost done: now we just need to write our master key to a file and use it to set a new passphrase.
 
 ```
 # echo 1fab015c1e3df9eac8728f65d3d16646 | xxd -r -p > key
